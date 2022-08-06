@@ -1,3 +1,3 @@
-function myFunction() {
-  SpreadsheetApp
+function doGet(){
+    return HtmlService.createHtmlOutputFromFile('index');
 }
