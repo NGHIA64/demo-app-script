@@ -25,3 +25,9 @@ function move(){
   sheet1.getRange('A1:E1').clear()
 }
 
+function lay_cot_du_lieu(){
+  var url_sheet = 'https://docs.google.com/spreadsheets/d/1UQQwb0TYRPgtiUIm1tuqyT-Oosnwfj7sOXtxkgvoWKw/edit#gid=480466906'
+  var sheet = SpreadsheetApp.openByUrl(url_sheet).getDataRange().getValues()
+  console.log(sheet)
+}
+
