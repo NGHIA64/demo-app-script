@@ -32,9 +32,16 @@ function lay_cot_du_lieu() {
 }
 
 function test_push_arr(){
-  var arr = [[]]
-  arr[0].push(12312,324234)
-  console.log(arr)
+  // var arr = []
+  // arr.push([234])
+  // arr.push([234])
+  // console.log(arr)
+  var array1 = ["Vijendra", "Singh"];
+var array2 = ["Singh", "Shakya"];
+var array3 = ["Singh", "Shakya"];
+array1 = array1.concat(array2);
+array1 = array1.concat(array3);
+console.log(array1);
 }
 
 function test_setvalues_nhieu_dong(){
@@ -55,4 +62,5 @@ function test_setvalues_nhieu_dong(){
     'Nghiant@hungdunghd.com.vn' ] ]
   s.getRange(`A${s.getLastRow()+1}:F${s.getLastRow()+arr.length}`).setValues(arr)
 }
+
 
