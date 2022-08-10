@@ -1,5 +1,5 @@
 function doGet(request) {
-  return HtmlService.createTemplateFromFile('Page')
+  return HtmlService.createTemplateFromFile('index')
     .evaluate();
 }
 var s = SpreadsheetApp.openById('1-4BTmH57oCNUtuS-g-NHXhfjY2Ag7eUMoE7Qq_QT6DI')
