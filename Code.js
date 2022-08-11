@@ -32,10 +32,10 @@ function lay_cot_du_lieu() {
 }
 
 function test_push_arr(){
-  // var arr = []
-  // arr.push([234])
-  // arr.push([234])
-  // console.log(arr)
+  var arr = []
+  arr.push([234])
+  arr.push([234])
+  console.log(arr)
   var array1 = ["Vijendra", "Singh"];
 var array2 = ["Singh", "Shakya"];
 var array3 = ["Singh", "Shakya"];
