@@ -33,7 +33,7 @@ function lay_cot_du_lieu() {
 
 function test_push_arr(){
   var arr = []
-  arr.push([234])
+  arr.push([2345])
   arr.push([234])
   console.log(arr)
   var array1 = ["Vijendra", "Singh"];
