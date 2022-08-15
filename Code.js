@@ -37,7 +37,7 @@ function test_push_arr(){
   arr.push([234])
   console.log(arr)
   var array1 = ["Vijendra", "Singh"];
-var array2 = ["Singh", "Shakyatie"];
+var array2 = ["Singh", "Shakyatieyyyyy"];
 var array3 = ["Singh", "Shakya"];
 array1 = array1.concat(array2);
 array1 = array1.concat(array3);
@@ -51,7 +51,7 @@ function test_setvalues_nhieu_dong(){
     [ '01bef834',
     new Date(),
     'ADD',
-    '7,a60ab7a9,333333,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,',
+    '7,a60ab7a9,33355333,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,',
     'don_hang',
     'Nghiant@hungdunghd.com.vn' ],
   [ '7b866a28',
