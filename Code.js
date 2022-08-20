@@ -38,7 +38,7 @@ function test_push_arr(){
   console.log(arr)
   var array1 = ["Vijendra", "Singh"];
 var array2 = ["Singh", "Shakyatieyyyyy1"];
-var array3 = ["Singh", "Shakyads"];
+var array3 = ["Singh", "Shakya"];
 array1 = array1.concat(array2);
 array1 = array1.concat(array3);
 console.log(array1);
@@ -61,6 +61,17 @@ function test_setvalues_nhieu_dong(){
     'don_hang',
     'Nghiant@hungdunghd.com.vn' ] ]
   s.getRange(`A${s.getLastRow()+1}:F${s.getLastRow()+arr.length}`).setValues(arr)
+}
+
+function layDuLieuNhap(url, name_sheet_data, name_sheet_import) {
+  // var url = 'https://docs.google.com/spreadsheets/d/1FQac1blPRir4AEPgqS9KW_OrZs6f6OIbAxcvx5J62EU/edit#gid=0'
+  // var name_sheet_import = 'Nhập Giá'
+  // var name_sheet_data = 'giaSP'
+  var s = SpreadsheetApp.openByUrl(url)
+  var sheet_import = s.getSheetByName(name_sheet_import)
+  var sheet_data = s.getSheetByName(name_sheet_data)
+  console.log(sheet_import.getRange(2, 1, sheet_import.getLastRow(), sheet_import.getLastColumn()).getValues())
+  sheet_data.getRange(sheet_data.getLastRow() + 1, 1, sheet_import.getLastRow(), sheet_data.getLastColumn()).setValues(sheet_import.getRange(2, 1, sheet_import.getLastRow(), sheet_import.getLastColumn()).getValues())
 }
 
 
