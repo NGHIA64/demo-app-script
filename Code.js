@@ -38,7 +38,7 @@ function test_push_arr(){
   console.log(arr)
   var array1 = ["Vijendra", "Singh"];
 var array2 = ["Singh", "Shakyatieyyyyy1"];
-var array3 = ["Singh", "Shakya"];
+var array3 = ["Singh", "Shakyads"];
 array1 = array1.concat(array2);
 array1 = array1.concat(array3);
 console.log(array1);
