@@ -51,7 +51,7 @@ function test_setvalues_nhieu_dong(){
     [ '01bef834',
     new Date(),
     'ADD',
-    '7,a60ab7a9,33355333,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,',
+    '7,a60ab7a9,333553313,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,',
     'don_hang',
     'Nghiant@hungdunghd.com.vn' ],
   [ '7b866a28',
