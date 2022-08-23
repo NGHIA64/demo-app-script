@@ -57,7 +57,7 @@ function test_setvalues_nhieu_dong(){
   [ '7b866a28',
     new Date(),
     'DELETE',
-    '2,88888867,rgdfg,dfgdfg,,,dfg,fdg,gdf,gdfg,,,,,,,,,,,,,,,,,,,,,,,,,,',
+    '2,88888867,rgdfg,dfgdfg,,,dfeg,fdg,gdf,gdfg,,,,,,,,,,,,,,,,,,,,,,,,,,',
     'don_hang',
     'Nghiant@hungdunghd.com.vn' ] ]
   s.getRange(`A${s.getLastRow()+1}:F${s.getLastRow()+arr.length}`).setValues(arr)
@@ -73,5 +73,18 @@ function layDuLieuNhap(url, name_sheet_data, name_sheet_import) {
   console.log(sheet_import.getRange(2, 1, sheet_import.getLastRow(), sheet_import.getLastColumn()).getValues())
   sheet_data.getRange(sheet_data.getLastRow() + 1, 1, sheet_import.getLastRow(), sheet_data.getLastColumn()).setValues(sheet_import.getRange(2, 1, sheet_import.getLastRow(), sheet_import.getLastColumn()).getValues())
 }
+
+
+IF(ISBLANK([chon_khuyen_mai]),Min(select(CTKM[so_luong_khach_can_lay],AND([id_sp]=[_THISROW].[id_sp],[ngay_bat_dau]<=date([_THISROW].[date]),
+[ngay_ket_thuc]>=date([_THISROW].[date])))),
+[chon_khuyen_mai])
+
+IF(and([so_luong]>=lookup(MaxROW("Bảng giá","_RowNumber",and([IDsp]=[_THISROW].[IDsp],[Ngày]>=[Ngày bắt đầu])),
+"Bảng giá","IDgia","Số lượng áp dụng giá ngoại lệ"),ISNOTBLANK(lookup(MaxROW("Bảng giá","_RowNumber",and([IDsp]=[_THISROW].[IDsp],[Ngày]>=[Ngày bắt đầu])),
+"Bảng giá","IDgia","Số lượng áp dụng giá ngoại lệ"))),lookup(MaxROW("Bảng giá","_RowNumber",and([IDsp]=[_THISROW].[IDsp],[Ngày]>=[Ngày bắt đầu])),
+"Bảng giá","IDgia","Giá ngoại lệ"),
+if([Chọn kiểu giá]="Giá trần",lookup(MaxROW("Bảng giá","_RowNumber",and([IDsp]=[_THISROW].[IDsp],[Ngày]>=[Ngày bắt đầu])),
+"Bảng giá","IDgia","Giá trần"),IF(or([Phân loại]="Đề xuất khuyến mại",[Nguồn hàng]="Nhập kho phụ"),"0",lookup(MaxROW("Bảng giá","_RowNumber",and([IDsp]=[_THISROW].[IDsp],[Ngày]>=[Ngày bắt đầu])),
+"Bảng giá","IDgia","Giá khuyến cáo"))))
 
 
