@@ -88,3 +88,68 @@ if([Chọn kiểu giá]="Giá trần",lookup(MaxROW("Bảng giá","_RowNumber",a
 "Bảng giá","IDgia","Giá khuyến cáo"))))
 
 
+unique(select(khuyen_mai[id_qua],
+
+  and(
+  
+  [id_sp]=[_THISROW].[id_sp],
+  
+  [so_luong_khach_can_lay]=[_THISROW].[chon_khuyen_mai],[loai_khuyen_mai]=[_THISROW].[loai_khuyen_mai],[tich_diem]=[_THISROW].[tich_diem],
+  
+  if(ISBLANK([_THISROW].[chon_kieu_gia]),true,([ap_dung_cho_loai_gia]=[_THISROW].[chon_kieu_gia])),
+  
+  or(
+  [so_luong_khach_can_lay]<=[_THISROW].[so_luong],[tich_diem]="Có"),[ngay_bat_dau]<=date([_THISROW].[date]),
+  [ngay_ket_thuc]>=date([_THISROW].[date]))))
+
+
+  IF(LOOKUP(MAXROW("chi_tiet_don_hang","_RowNumber",AND(
+    [id_kh]=[_THISROW].[id_kh],[id_sp]=[_THISROW].[id_sp],[phan_loai]="Đề xuất khuyến mại")),"chi_tiet_don_hang","id_ctdh","tich_diem")="Có",
+    
+    LOOKUP(MAXROW("khuyen_mai","_RowNumber",and(
+    [id_qua]=INDEX([ma_qua],[dem_km]),
+    [id_sp]=[_THISROW].[id_sp],
+    [so_luong_khach_can_lay]=[_THISROW].[chon_khuyen_mai],
+    [ap_dung_cho_loai_gia]=[_THISROW].[chon_kieu_gia]
+    )),"khuyen_mai","id_qkm","so_luong"
+    )*([so_luong]/[chon_khuyen_mai])+LOOKUP(MAXROW("chi_tiet_don_hang","_RowNumber",AND(
+    [id_sp]=[_THISROW].[id_sp],[phan_loai]="Đề xuất khuyến mại",[tich_diem]="Có"
+    
+    )),"chi_tiet_don_hang","id_ctdh","so_luong_tich_diem"),
+    
+    LOOKUP(MAXROW("khuyen_mai","_RowNumber",and(
+    [id_qua]=INDEX([ma_qua],[dem_km]),
+    [id_sp]=[_THISROW].[id_sp],
+    [so_luong_khach_can_lay]=[_THISROW].[chon_khuyen_mai],
+    [ap_dung_cho_loai_gia]=[_THISROW].[chon_kieu_gia]
+    )),"khuyen_mai","id_qkm","so_luong"
+    )*([so_luong]/[chon_khuyen_mai]) 
+    
+    
+    )
+
+
+    FLOOR(IF(LOOKUP(MAXROW("chi_tiet_don_hang","_RowNumber",AND(
+      [id_kh]=[_THISROW].[id_kh],[id_sp]=[_THISROW].[id_sp],[phan_loai]="Đề xuất khuyến mại")),"chi_tiet_don_hang","id_ctdh","tich_diem")="Có",
+      
+      LOOKUP(MAXROW("khuyen_mai","_RowNumber",and(
+      [id_qua]=INDEX([ma_qua],[dem_km]),
+      [id_sp]=[_THISROW].[id_sp],
+      [so_luong_khach_can_lay]=[_THISROW].[chon_khuyen_mai],
+      [ap_dung_cho_loai_gia]=[_THISROW].[chon_kieu_gia]
+      )),"khuyen_mai","id_qkm","so_luong"
+      )*([so_luong]/[chon_khuyen_mai])+LOOKUP(MAXROW("chi_tiet_don_hang","_RowNumber",AND(
+      [id_sp]=[_THISROW].[id_sp],[phan_loai]="Đề xuất khuyến mại",[tich_diem]="Có"
+      
+      )),"chi_tiet_don_hang","IDctdh","so_luong tích điểm"),
+      
+      LOOKUP(MAXROW("khuyen_mai","_RowNumber",and(
+      [id_qua]=INDEX([ma_qua],[dem_km]),
+      [id_sp]=[_THISROW].[id_sp],
+      [so_luong_khach_can_lay]=[_THISROW].[chon_khuyen_mai],
+      [ap_dung_cho_loai_gia]=[_THISROW].[chon_kieu_gia]
+      )),"khuyen_mai","id_qkm","so_luong"
+      )*([so_luong]/[chon_khuyen_mai])  
+      
+      
+      ))
