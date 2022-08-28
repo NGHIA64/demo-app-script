@@ -153,3 +153,68 @@ unique(select(khuyen_mai[id_qua],
       
       
       ))
+
+//Anh thề đấy
+// Có nói lời yêu đâu mà người ta sẽ thấu
+// Đ2 Đ2 Sol La Sol Re Đ Mi Sol Sol
+// Đ2 Đ2 Sol La Sol Re Đ Mi Sol Sol 
+// Cứ giấu rồi ôm nỗi niềm trằn trọc đêm thâu
+// Sol La Đ2 Re2 Mi2 Re2 Đ2 Sol-La 
+// Thật ra anh cũng có đôi ba tư lần 
+// Mi Sol La Re Đô Sol F F Sol La Đ2 La Sol
+// Tập đứng trước gương để nói yêu em mà sao khó quá đi 
+// Đ2 Đ2 Sol La Sol Re Đ Mi Sol Sol
+// Chẳng biết là em bây giờ đã thương ai chưa
+// Đ2 Đ2 Sol La Sol Re Đ Mi Sol Sol
+// Sáng sớm rồi trưa tối chiều cần ai đón đưa
+// Sol Sol La Đ2 M2 Re2 Mi2 || Re2 Mi2 Re2 Đ2 La Sol Re2 Si Đ2
+// Lời tỏ tình tuy ngắn như thế ||nhưng suốt bao năm dong dài vẫn giấu đi 
+// Re2 Mi2 Re2 Đ2 La La Đ2 Re2-Mi2 Re2
+// Hãy cứ nói ra 1 lần rồi tính sau 
+//Điệp khúc 
+// La Sol La Sol2 Mi2 Sol2 Mi2 Sol2 Mi2 Re2
+// Anh thề là trái tim nhớ thương mỗi en thôi
+// La Sol La Sol2 Mi2 Sol Mi2 Mi2 Re2 Đô2 La Mi2 
+// Anh thề là sẽ luôn ở bên nếu em không từ chối
+// Re2-Mi2 Mi2 Re2 Đ2 La Đ2 Re2 Re2 
+// Nói mấy câu hẹn thề ngọt trên môi  
+// Re2 Đ2 Re2 Mi2 Re2 Đ2 Đ2
+// Ai còn tin những thứ xa xôi
+// F2 Mi2 F2 Mi2 F2 Mi2 Đ2 Mi2 Re2 
+// Có lẽ phải tìm cách tỏ tình khác thôi
+// La Sol La Sol2 Mi2 Sol2 Mi2 Sol2 Mi2 F2 Sol2 Mi2 Re2 
+// Em à cuộc sống như đóa hoa nay sớm nở mai tàn
+// La Sol La Sol2 Mi2 Sol2 Mi2 Mi2 Re2 Đo2 La Mi2 Mi2 F2 Sol2 Mi2 Re2 
+// Yêu làm mọi thứ trên thế gian sống vui khi ngày tháng mình lo lắng cho nhau 
+// Đ2 La Re2 Sol La Đ2 Re2 Mi2 Re2 Đ2
+// Cây cần lá người cần tình yêu giữa ngân hà 
+// Re2 Mi2 F2 Mi2 Re2 Đ2 Đ2 Si Si Đ2-Re2 Đ2
+// Một lần hãy tin những yêu thương thật thà của anh.
+
+
+CONCATENATE("PXK",RIGHT(YEAR([dau_thoi_gian]),2),MONTH([dau_thoi_gian]),DAY([dau_thoi_gian]),left("00",2-
+len(text(1+
+NUMBER(
+right(
+LOOKUP(MAXROW("phieu_xuat_kho", "_RowNumber"),
+"phieu_xuat_kho", "id_pxk",
+"id_pxk"),2)
+))))
+&
+(1+NUMBER(
+right(
+LOOKUP(MAXROW("phieu_xuat_kho", "_RowNumber"),
+"phieu_xuat_kho", "id_pxk",
+"id_pxk"),2)
+)))
+
+SELECT(don_hang[id_dh],
+  and(
+    [kieu_don_hang]<>"Nhập thanh toán KH",
+    [nguon_hang]<>"Kho phụ",
+    [tinh_trang_don_hang]="2. Chờ xuất kho",
+    in([id_dh],chi_tiet_phieu_xuat_kho[id_dh])=false,
+    or(in([id_qh],[_THISROW].[giao_theo_tuyen]),in([id_kh],[_THISROW].[giao_bo_sung]))))
+
+    unique(SELECT(chi_tiet_don_hang[id_sp],and(in([id_dh],[_THISROW].[id_dh]),[ton_kho]>=0
+    )))
