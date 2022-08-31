@@ -218,3 +218,43 @@ SELECT(don_hang[id_dh],
 
     unique(SELECT(chi_tiet_don_hang[id_sp],and(in([id_dh],[_THISROW].[id_dh]),[ton_kho]>=0
     )))
+
+
+    SELECT(don_hang[id_dh],and([tinh_trang_don_hang]="2. Chờ xuất kho",in([id_dh], chi_tiet_phieu_xuat_kho[id_dh])
+    or(in([id_qh],[_THISROW].[giao_theo_tuyen]),
+    in([id_kh],[_THISROW].[giao_bo_sung])),
+    [kieu_don_hang]<>"Nhập thanh toán KH",
+    [nguon_hang]<>"Kho phụ"))
+
+
+    Select(don_hang[id_qh],and([tinh_trang_don_hang]="2. Chờ xuất kho",in([id_dh],chi_tiet_phieu_xuat_kho[id_dh])=false,[nguon_hang]<>"Kho phụ"))
+
+    Select(don_hang[id_kh],and([tinh_trang_don_hang]="2. Chờ xuất kho",in([id_dh],chi_tiet_phieu_xuat_kho[id_dh])=false
+    ,NOT(in([id_qh]
+      ,[_THISROW].[giao_theo_tuyen]))
+    ,[nguon_hang]<>"Kho phụ"
+    ,[kieu_don_hang]<>"Nhập thanh toán KH"))
+
+    SUM(
+      SELECT(chi_tiet_don_hang[giu_cho_tich_diem],
+      AND(
+      [id_sp]=[_ThisRow].[id_sp],
+      in([id_dh],[_THISROW].[id_dh])
+      )
+      ))
+
+      SUM(
+        SELECT(chi_tiet_don_hang[so_luong],
+        AND(
+        [id_sp]=[_ThisRow].[id_sp],
+        in([id_dh],[_THISROW].[id_dh])
+        )
+        ))
+
+        SUM(
+          SELECT(chi_tiet_don_hang[dung_tich_san_pham],
+          AND(
+            [id_sp]=[_ThisRow].[id_sp],
+            in([id_dh],[_THISROW].[id_dh])
+          )
+          ))
